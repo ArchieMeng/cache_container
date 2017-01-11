@@ -12,13 +12,13 @@ class CacheContainer:
     def has_next(self):
         return len(self.cache) != 0
 
-    def dump(self, obj):
+    def dump(self, obj, name="cache"):
         '''
         :obj type: object
         :return type:None
         '''
-        cache_name = 'cache{}.tmp'.format(len(self.cache))
-        with open(cache_name,'wb') as f:
+        cache_name = '{}{}.tmp'.format(name, len(self.cache))
+        with open(cache_name, 'wb') as f:
             pickle.dump(obj, f, protocol=2)
         self.cache.append(cache_name)
         del obj
