@@ -21,8 +21,7 @@ class CacheContainer:
         with open(cache_name, 'wb') as f:
             pickle.dump(obj, f, protocol=2)
         self.cache.append(cache_name)
-        del obj
-
+        
     def __iter__(self):
         return self
 
